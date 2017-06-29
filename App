@@ -1,0 +1,86 @@
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class App {
+
+	public static void main(String[] args) {
+
+		// Sets allow only unique entries, no duplicates.
+		// HashSet does not guarantee order
+		// LinkedHashSet guarantees order
+		// TreeSet naturally orders
+
+		Set<Integer> set1 = new HashSet<Integer>();
+
+		if (set1.isEmpty()) {
+			System.out.println("Of course the set is empty.");
+		}
+
+		set1.add(5);
+		set1.add(6);
+		set1.add(7);
+		set1.add(8);
+		set1.add(9);
+		set1.add(10);
+
+		if (set1.isEmpty()) {
+			System.out.println("Now the set is populated, sir.");
+		} else {
+			System.out.println("It's definitely full of something.");
+		}
+
+		// Since no duplicate entries are permitted, adding a duplicate entry
+		// does nothing
+
+		set1.add(5);
+		System.out.println(set1);
+
+		// Iteration
+
+		for (Integer element : set1) {
+			System.out.println(element);
+		}
+
+		// Does the set contain a specific item?
+
+		if (set1.contains(5)) {
+			System.out.println("The set contains the value: 5");
+		}
+
+		// Set2 contains common elements with Set1, but also some new
+
+		Set<Integer> set2 = new TreeSet<Integer>();
+
+		set2.add(5);
+		set2.add(6);
+		set2.add(13);
+		set2.add(11);
+		set2.add(16);
+		set2.add(29);
+
+		// TreeSet naturally orders entries
+
+		System.out.println(set2);
+
+		// Intersection //
+		// What elements do set1 & set2 have in common?
+
+		Set<Integer> intersection = new HashSet<Integer>(set1);
+
+		intersection.retainAll(set2);
+
+		System.out.println(intersection);
+
+		// Difference //
+		// Find out which elements in set1 are NOT in set2 //
+
+		Set<Integer> difference = new HashSet<Integer>(set1);
+
+		difference.removeAll(set2);
+
+		System.out.println(difference);
+
+	}
+
+}
